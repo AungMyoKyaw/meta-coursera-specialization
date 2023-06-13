@@ -1,0 +1,55 @@
+/* 12 column grid */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  background: #495e57;
+  color: #fff;
+  padding: 30px;
+}
+
+.testimonialsGridItem {
+  grid-column: 2 / span 10;
+  width: 100%;
+}
+
+.testimonialsHeader {
+  font-size: 1.1rem;
+  text-align: center;
+  color: #face14;
+}
+
+/* 4 flex item will distribute space between */
+.testimonialsBody {
+  display: flex;
+  justify-content: space-between;
+}
+
+.testimonialsBodyItem img {
+  border-radius: 16px;
+}
+
+.testimonialsBodyItem h2 {
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+/* img and text side by side */
+.imgandtext {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 14rem;
+}
+
+.imgandtext img {
+  margin-right: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.imgandtext p {
+  font-size: 0.7rem;
+}

@@ -1,0 +1,50 @@
+.formSection {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  padding: 0;
+}
+
+.form {
+  grid-column-start: 3;
+  grid-column-end: span 7;
+  width: 100%;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.form textarea {
+  display: block;
+  resize: none;
+  width: 100%;
+  margin-bottom: 10px;
+  height: 100px;
+}
+
+.form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 16px;
+  background-color: #face14;
+  color: #000;
+  cursor: pointer;
+}

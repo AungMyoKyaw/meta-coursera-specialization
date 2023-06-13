@@ -1,0 +1,39 @@
+.heroSection {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  background: #495e57;
+  padding: 0;
+}
+
+.heroSection div:nth-child(1) {
+  grid-column-start: 3;
+  grid-column-end: span 6;
+}
+
+.heroSection div:nth-child(1) h1 {
+  color: #face14;
+}
+
+.heroSection div:nth-child(1) div p {
+  color: #fff;
+}
+
+.heroSection div:nth-child(1) div button {
+  width: 200px;
+  height: 50px;
+  border-radius: 16px;
+  background: #face14;
+  color: #000;
+  cursor: pointer;
+  border: none;
+}
+
+.heroSection div img {
+  width: 300px;
+  height: 300px;
+  border-radius: 16px;
+  position: relative;
+  top: 50px;
+}

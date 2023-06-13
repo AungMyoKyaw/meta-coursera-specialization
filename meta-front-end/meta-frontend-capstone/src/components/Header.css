@@ -1,0 +1,21 @@
+.headerList {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.headerList > li:nth-child(1) {
+  grid-column: 3;
+}
+
+.headerList li {
+  list-style-type: none;
+  text-align: center;
+}
+
+.headerList li a {
+  text-decoration: none;
+}

@@ -1,0 +1,46 @@
+.aboutGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+  place-items: center;
+  background: #fff;
+  color: #000;
+  padding: 30px;
+}
+
+.aboutGridItem {
+  grid-column: 2 / span 10;
+  width: 100%;
+}
+
+.aboutFlexContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.aboutFlexItem {
+  width: 100%;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.imgFlexItem {
+  position: relative;
+}
+
+.img1 {
+  position: absolute;
+  width: 300px;
+  border-radius: 16px;
+  object-fit: cover;
+  top: 100px;
+  left: 20px;
+}
+
+.img2 {
+  position: absolute;
+  width: 300px;
+  border-radius: 16px;
+  object-fit: cover;
+  left: 140px;
+}
