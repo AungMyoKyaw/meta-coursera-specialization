@@ -1,0 +1,80 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# Django stuff
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media/
+/static/
+
+# If using MySQL/PostgreSQL
+*.db
+*.sqlite3
+*.pyo
+*.pyd
+
+# Secrets
+.env
+/config/settings/local.py
+/config/settings/.env
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Migrations (optional)
+**/migrations/__pycache__/
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/*.pyd
+
+# Static and media files
+/staticfiles/
+/media/
+
+# Celery
+celerybeat-schedule
+
+# Other IDEs
+*.swp
+*.swo
+
+# Node modules (if using frontend assets)
+node_modules/
+
+# Compiled assets
+*.css.map
+*.js.map
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Pipenv
+Pipfile.lock
+
+# macOS files
+.DS_Store
+
+# Gunicorn
+gunicorn.log
+gunicorn.err
+
+menu_images
+
+.DS_Store
