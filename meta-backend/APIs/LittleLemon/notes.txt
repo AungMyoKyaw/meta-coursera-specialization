@@ -4,3 +4,8 @@
 
 - Username: superadmin
 - Password: superadmin
+
+## User
+
+- Username: user1
+- Password: EpC2XqSK54Vhqjz6DiqjfXmhUDAWFin5
