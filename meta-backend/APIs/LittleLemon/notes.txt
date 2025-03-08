@@ -1,0 +1,6 @@
+# Notes
+
+## Super Admin
+
+- Username: superadmin
+- Password: superadmin
