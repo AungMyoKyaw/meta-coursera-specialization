@@ -1,0 +1,34 @@
+
+# Byte-code files
+*.pyc
+__pycache__/
+
+# Migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Virtual environment
+virtualenv/
+venv/
+env/
+
+# Database
+db.sqlite3
+
+# Media files
+media/
+
+# Static files
+static/
+
+# IDE-specific files
+.idea/
+*.iml
+.vscode/
+
+# OS-specific files
+.DS_Store
+thumbs.db
+
+# Environment variables
+.env

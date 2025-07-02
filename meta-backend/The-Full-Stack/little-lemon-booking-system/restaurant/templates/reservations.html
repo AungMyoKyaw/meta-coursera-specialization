@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Make a Reservation</title>
+</head>
+<body>
+    <h1>Make a Reservation</h1>
+    <form id="booking-form">
+        <input type="text" id="first-name" placeholder="First Name" required />
+        <input type="date" id="reservation-date" required />
+        <select id="reservation-slot" required></select>
+        <button type="submit">Book</button>
+    </form>
+    <div id="message"></div>
+    <script>
+        const slots = ["12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM"];
+        const dateInput = document.getElementById("reservation-date");
+        const slotSelect = document.getElementById("reservation-slot");
+        const messageDiv = document.getElementById("message");
+        const form = document.getElementById("booking-form");
+
+        function populateSlots(bookedSlots) {
+            slotSelect.innerHTML = "";
+            slots.forEach(slot => {
+                const option = document.createElement("option");
+                option.value = slot;
+                option.textContent = slot;
+                if (bookedSlots.includes(slot)) {
+                    option.disabled = true;
+                }
+                slotSelect.appendChild(option);
+            });
+        }
+
+        async function fetchBookings(date) {
+            const response = await fetch(`/restaurant/booking/?reservation_date=${date}`);
+            const data = await response.json();
+            return data.map(b => b.reservation_slot);
+        }
+
+        async function updateSlots() {
+            const date = dateInput.value;
+            const booked = await fetchBookings(date);
+            if (booked.length === 0) {
+                messageDiv.textContent = "No Booking";
+            } else {
+                messageDiv.textContent = "";
+            }
+            populateSlots(booked);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const today = new Date().toISOString().split("T")[0];
+            dateInput.value = today;
+            updateSlots();
+        });
+
+        dateInput.addEventListener("change", updateSlots);
+
+        form.addEventListener("submit", async e => {
+            e.preventDefault();
+            const firstName = document.getElementById("first-name").value;
+            const reservationDate = dateInput.value;
+            const reservationSlot = slotSelect.value;
+            const response = await fetch("/restaurant/booking/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    first_name: firstName,
+                    reservation_date: reservationDate,
+                    reservation_slot: reservationSlot
+                })
+            });
+            if (response.ok) {
+                messageDiv.textContent = "Booking successful!";
+                updateSlots();
+                form.reset();
+                dateInput.value = new Date().toISOString().split("T")[0];
+            } else {
+                const err = await response.json();
+                messageDiv.textContent = err.detail || JSON.stringify(err);
+            }
+        });
+    </script>
+</body>
+</html>
