@@ -1,6 +1,6 @@
 # Little Lemon Booking System
 
-Welcome to the **Little Lemon Booking System**! This web application allows restaurant visitors to make table reservations online, and lets administrators manage bookings and menu items.
+Welcome to the **Little Lemon Booking System**! This web application allows restaurant visitors to make table reservations online and lets administrators manage bookings and menu items.
 
 ---
 
@@ -67,14 +67,15 @@ venv\Scripts\activate
 
 ### 3. Install Dependencies
 
+A `requirements.txt` file is provided to ensure you install the correct package versions.
+
 ```bash
-pip install Django djangorestframework djoser djangorestframework-simplejwt
+pip install -r requirements.txt
 ```
-*(Note: If a `requirements.txt` file is provided, you can run `pip install -r requirements.txt` instead.)*
 
 ### 4. Apply Database Migrations
 
-This command sets up the database tables and seeds the initial menu items.
+This command sets up the database tables.
 
 ```bash
 python manage.py migrate
