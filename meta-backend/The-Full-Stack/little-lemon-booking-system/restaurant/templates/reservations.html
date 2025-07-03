@@ -2,23 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Make a Reservation</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    <h1>Make a Reservation</h1>
+    <div class="container">
+        <h1>Make a Reservation</h1>
     <form id="booking-form">
-        <input type="text" id="first-name" placeholder="First Name" required />
+        <input type="text" id="full-name" placeholder="Full Name" required />
         <input type="date" id="reservation-date" required />
         <select id="reservation-slot" required></select>
         <button type="submit">Book</button>
     </form>
     <div id="message"></div>
+    <div id="total-count" class="total-count"></div>
+    <div id="timeline" class="timeline"></div>
+    </div>
     <script>
-        const slots = ["12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM"];
+    const slots = ["12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM"];
         const dateInput = document.getElementById("reservation-date");
         const slotSelect = document.getElementById("reservation-slot");
         const messageDiv = document.getElementById("message");
         const form = document.getElementById("booking-form");
+        const totalCount = document.getElementById("total-count");
+        const timelineDiv = document.getElementById("timeline");
 
         function populateSlots(bookedSlots) {
             slotSelect.innerHTML = "";
@@ -35,19 +43,46 @@
 
         async function fetchBookings(date) {
             const response = await fetch(`/restaurant/booking/?reservation_date=${date}`);
-            const data = await response.json();
-            return data.map(b => b.reservation_slot);
+            return await response.json();
+        }
+
+        function renderTimeline(bookings) {
+            timelineDiv.innerHTML = '';
+            slots.forEach(slot => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('timeline-item');
+                const slotLabel = document.createElement('div');
+                slotLabel.classList.add('slot-label');
+                slotLabel.textContent = slot;
+                const slotDiv = document.createElement('div');
+                slotDiv.classList.add('timeline-slot');
+                const booking = bookings.find(b => b.reservation_slot === slot);
+                if (booking) {
+                    slotDiv.classList.add('timeline-booked');
+                    const label = document.createElement('span');
+                    label.classList.add('booking-label');
+                    label.textContent = booking.full_name;
+                    slotDiv.appendChild(label);
+                }
+                itemDiv.appendChild(slotLabel);
+                itemDiv.appendChild(slotDiv);
+                timelineDiv.appendChild(itemDiv);
+            });
         }
 
         async function updateSlots() {
             const date = dateInput.value;
-            const booked = await fetchBookings(date);
-            if (booked.length === 0) {
-                messageDiv.textContent = "No Booking";
+            const bookings = await fetchBookings(date);
+            const bookedSlots = bookings.map(b => b.reservation_slot);
+            // display status and count
+            if (bookings.length === 0) {
+                messageDiv.textContent = "No bookings for this date.";
             } else {
                 messageDiv.textContent = "";
             }
-            populateSlots(booked);
+            totalCount.textContent = `Total Bookings: ${bookings.length}`;
+            populateSlots(bookedSlots);
+            renderTimeline(bookings);
         }
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -60,14 +95,14 @@
 
         form.addEventListener("submit", async e => {
             e.preventDefault();
-            const firstName = document.getElementById("first-name").value;
+            const fullName = document.getElementById("full-name").value;
             const reservationDate = dateInput.value;
             const reservationSlot = slotSelect.value;
             const response = await fetch("/restaurant/booking/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    first_name: firstName,
+                    full_name: fullName,
                     reservation_date: reservationDate,
                     reservation_slot: reservationSlot
                 })

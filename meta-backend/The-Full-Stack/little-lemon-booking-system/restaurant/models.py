@@ -1,15 +1,23 @@
 from django.db import models
+from django.conf import settings
 
 class Booking(models.Model):
-    first_name = models.CharField(max_length=200)
+    full_name = models.CharField(max_length=200, db_column='first_name')  # preserve existing DB column
     reservation_date = models.DateField(null=True, blank=True)
     reservation_slot = models.CharField(max_length=50, default='', blank=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='bookings'
+    )
 
     class Meta:
         unique_together = ('reservation_date', 'reservation_slot')
 
     def __str__(self):
-        return f"{self.first_name} - {self.reservation_date} at {self.reservation_slot}"
+        return f"{self.full_name} - {self.reservation_date} at {self.reservation_slot}"
 
 
 class Menu(models.Model):

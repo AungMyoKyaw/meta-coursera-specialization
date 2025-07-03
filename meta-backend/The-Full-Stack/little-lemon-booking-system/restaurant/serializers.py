@@ -11,7 +11,7 @@ class MenuSerializer(serializers.ModelSerializer):
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
-        fields = ['id', 'first_name', 'reservation_date', 'reservation_slot']
+        fields = ['id', 'full_name', 'reservation_date', 'reservation_slot']
         validators = [
             UniqueTogetherValidator(
                 queryset=Booking.objects.all(),
@@ -19,3 +19,8 @@ class BookingSerializer(serializers.ModelSerializer):
                 message="This time slot is already booked for the selected date."
             )
         ]
+
+    def create(self, validated_data):
+        request = self.context.get('request', None)
+        user = request.user if request and request.user.is_authenticated else None
+        return Booking.objects.create(created_by=user, **validated_data)

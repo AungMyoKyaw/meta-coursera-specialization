@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from restaurant.views import reservation_form
 
 urlpatterns = [
+    path('', reservation_form, name='home'),
+    # Home page reservation form
     path('admin/', admin.site.urls),
     path('restaurant/', include('restaurant.urls')),
     path('auth/', include('djoser.urls')),
