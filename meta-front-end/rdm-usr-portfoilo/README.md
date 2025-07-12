@@ -1,6 +1,6 @@
-# Simplest Working Calc
+# Portfolio Project
 
-A simple calculator app built with React.
+A personal portfolio single-page application built with React and Chakra UI.
 
 ## Setup
 
@@ -22,6 +22,12 @@ A simple calculator app built with React.
    ```bash
    npm test
    ```
+
+## Features
+
+- Responsive design
+- Chakra UI components
+- Formik and Yup for form handling and validation
 
 ## License
 
