@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'restaurant',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -166,7 +167,14 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '60/hour',
         'user': '1000/hour'
-    }
+    },
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+# drf-spectacular settings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Little Lemon Restaurant API',
+    'DESCRIPTION': 'Backend API for Restaurant Management System',
+    'VERSION': '1.0.0',
 }
 
 # Djoser configuration for user authentication
