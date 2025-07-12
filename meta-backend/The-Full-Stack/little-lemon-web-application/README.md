@@ -12,7 +12,7 @@ Here’s a preview of the Little Lemon Restaurant web application:
 </p>
 
 
-## �🚀 Quick Start with Docker
+## 🚀 Quick Start with Docker
 
 1. Clone the repository and navigate to the project directory
 2. Run the application using Docker Compose:
