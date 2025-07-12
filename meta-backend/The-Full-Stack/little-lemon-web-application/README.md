@@ -2,7 +2,17 @@
 
 A comprehensive Django REST Framework backend application for managing restaurant operations including menu items, table bookings, and user authentication.
 
-## 🚀 Quick Start with Docker
+
+## 📸 Application Screenshot
+
+Here’s a preview of the Little Lemon Restaurant web application:
+
+<p align="center">
+  <img src="docs/images/app-screenshot.png" alt="Little Lemon App Screenshot" width="700"/>
+</p>
+
+
+## �🚀 Quick Start with Docker
 
 1. Clone the repository and navigate to the project directory
 2. Run the application using Docker Compose:
