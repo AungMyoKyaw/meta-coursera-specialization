@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: littlelemon_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-littlelemon_db}
+      MYSQL_USER: ${MYSQL_USER:-littlelemon_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-littlelemon_password}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+      start_period: 40s
+
+  web:
+    build: .
+    container_name: littlelemon_web
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py load_sample_data &&
+             python manage.py runserver 0.0.0.0:8000"
+    restart: always
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=3306
+
+volumes:
+  mysql_data:
+  static_volume:

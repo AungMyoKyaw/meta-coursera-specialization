@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Lemon Restaurant API</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.2rem;
+            color: #fff;
+            opacity: 0.9;
+        }
+        .api-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .api-section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #ff6b6b;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #007bff;
+        }
+        .method {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+        .get { background: #28a745; color: white; }
+        .post { background: #007bff; color: white; }
+        .put { background: #ffc107; color: black; }
+        .delete { background: #dc3545; color: white; }
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .admin-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .admin-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍋 Little Lemon Restaurant</h1>
+            <p>Backend API for Restaurant Management System</p>
+            <a href="/admin/" class="admin-link">Admin Panel</a>
+            <a href="/api/" class="admin-link">Browse API</a>
+        </div>
+
+        <div class="api-section">
+            <h2>📚 API Endpoints</h2>
+
+            <h3>Authentication</h3>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-url">/api/auth/users/</span> - User Registration
+            </div>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-url">/api/auth/token/login/</span> - User Login (Get Token)
+            </div>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-url">/api/auth/token/logout/</span> - User Logout
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-url">/api/user/profile/</span> - Get User Profile
+            </div>
+
+            <h3>Menu Management</h3>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-url">/api/menu/</span> - List All Menu Items
+            </div>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-url">/api/menu/</span> - Create New Menu Item (Auth Required)
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-url">/api/menu/{id}/</span> - Get Menu Item Details
+            </div>
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="endpoint-url">/api/menu/{id}/</span> - Update Menu Item (Auth Required)
+            </div>
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="endpoint-url">/api/menu/{id}/</span> - Delete Menu Item (Auth Required)
+            </div>
+
+            <h3>Table Bookings</h3>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-url">/api/bookings/</span> - List User's Bookings (Auth Required)
+            </div>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-url">/api/bookings/</span> - Create New Booking (Auth Required)
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-url">/api/bookings/{id}/</span> - Get Booking Details (Auth Required)
+            </div>
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="endpoint-url">/api/bookings/{id}/</span> - Update Booking (Auth Required)
+            </div>
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="endpoint-url">/api/bookings/{id}/</span> - Cancel Booking (Auth Required)
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🔐 Authentication</h3>
+                <p>Token-based authentication system with user registration and secure login/logout functionality.</p>
+            </div>
+            <div class="feature">
+                <h3>🍽️ Menu Management</h3>
+                <p>Complete CRUD operations for menu items with categories, pricing, and inventory management.</p>
+            </div>
+            <div class="feature">
+                <h3>📅 Table Bookings</h3>
+                <p>Reservation system with date/time validation, party size management, and booking status tracking.</p>
+            </div>
+            <div class="feature">
+                <h3>🐳 Docker Ready</h3>
+                <p>Fully containerized with Docker Compose including MySQL database and automated setup.</p>
+            </div>
+            <div class="feature">
+                <h3>🧪 Tested</h3>
+                <p>Comprehensive unit tests covering all API endpoints, models, and business logic.</p>
+            </div>
+            <div class="feature">
+                <h3>📊 Admin Panel</h3>
+                <p>Django admin interface for easy management of menu items, bookings, and user accounts.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
