@@ -29,7 +29,7 @@ Welcome to the **Meta Coursera Specialization** repo! ✨
 ## 🏆 Specializations
 
 - [x] [Meta Front-End Developer Professional Certificate](https://www.credly.com/badges/f5ebe884-7007-4126-913d-75697f4b3ccf/public_url) 🟢
-- [ ] Meta Back-End Developer Professional Certificate 🟡
+- [x] [Meta Back-End Developer Professional Certificate](https://www.credly.com/badges/fb3d9d40-86b1-415a-9989-252336948975/public_url) 🟢
 - [ ] Meta iOS Developer Professional Certificate 🟡
 - [ ] Meta Database Engineer Professional Certificate 🟡
 - [ ] Meta Android Developer Professional Certificate 🟡
@@ -69,7 +69,7 @@ Ready to dive in? Follow these steps to get started:
 ## 🗺️ Roadmap
 
 - [x] Complete Meta Front-End Developer Specialization 🎉
-- [ ] Complete Meta Back-End Developer Specialization 🔜
+- [x] Complete Meta Back-End Developer Specialization 🎉
 - [ ] Add more hands-on project examples 🧑‍💻
 - [ ] Expand documentation for each specialization 📖
 - [ ] Grow the contributor community 🌱
@@ -95,6 +95,56 @@ Contributions are what make the open source community such an amazing place to l
 ## 📝 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 🎓 Meta Back-End Developer Professional Certificate
+
+I have successfully completed the [Meta Back-End Developer Professional Certificate](https://www.credly.com/badges/fb3d9d40-86b1-415a-9989-252336948975/public_url) from Meta via Coursera.
+
+**About the Specialization:**
+
+This 9-course professional certificate, designed by Meta and delivered on Coursera, provides comprehensive training in back-end development. The program covers Python, Django, databases, APIs, cloud hosting, version control, and more. It is designed to help learners build job-ready skills for a career as a back-end developer, with hands-on projects and interview preparation.
+
+**Key Skills Gained:**
+
+- Python programming
+- Django web framework
+- SQL and database design
+- Version control with Git & GitHub
+- Unix/Linux commands
+- API development (REST, JSON, XML)
+- Cloud hosting basics
+- Object-Oriented Programming (OOP)
+- Full-stack and front-end fundamentals
+- Coding interview preparation
+
+**Certificate:** [View my badge on Credly](https://www.credly.com/badges/fb3d9d40-86b1-415a-9989-252336948975/public_url)
+
+---
+
+## 🎓 Meta Front-End Developer Professional Certificate
+
+I have successfully completed the [Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer) from Meta via Coursera.
+
+**About the Specialization:**
+
+This 9-course professional certificate, designed by Meta and delivered on Coursera, provides comprehensive training in front-end development. The program covers HTML, CSS, JavaScript, React, UI/UX, version control, and more. It is designed to help learners build job-ready skills for a career as a front-end developer, with hands-on projects and interview preparation.
+
+**Key Skills Gained:**
+
+- HTML5 & CSS3
+- JavaScript (ES6+)
+- React
+- Responsive web design
+- UI/UX fundamentals
+- Version control with Git & GitHub
+- Web accessibility
+- Testing and debugging
+- Front-end deployment
+- Coding interview preparation
+
+**Certificate:** [View my badge on Credly](https://www.credly.com/badges/f5ebe884-7007-4126-913d-75697f4b3ccf/public_url)
 
 ---
 
